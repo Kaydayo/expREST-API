@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('../dist/app').default;
+var app = require('../dist/src/app').default;
 var debug = require('debug')('week-6-task:server');
 var http = require('http');
 

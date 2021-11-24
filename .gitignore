@@ -1,5 +1,4 @@
-package.json
-tsconfig.json
 yarn.lock
 node_modules/
-dist/
+__tests__/
+yarn-error.log

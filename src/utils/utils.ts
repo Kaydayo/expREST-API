@@ -1,6 +1,19 @@
 import fs from 'fs'
 import {IncomingMessage} from 'http';
 import path from 'path'
+import Joi, { string } from 'joi'
+
+
+export const validateEntry = (data: author)=> {
+    const schema = Joi.object({
+        author: Joi.string().required(),
+        age: Joi.number().required(),
+        address: Joi.string().required(),
+        books: Joi.array().required()
+    }).unknown();
+    return schema.validate(data);
+}
+
 
 export interface author {
     id?: number,
@@ -19,7 +32,7 @@ export interface books{
     serialNumber: number | null
 }
 
-const filepath = path.join(__dirname, ".../database.json");
+const filepath = path.join(__dirname, "../database.json");
 
 export function readFile(){
     try{
@@ -40,3 +53,4 @@ export function generateIdsForBooks(booksData: books[]):books[]{
 export const writeFile = (data: author[]) => {
     fs.writeFileSync(filepath, JSON.stringify(data, null, 4))
 }
+
